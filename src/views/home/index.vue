@@ -1,12 +1,74 @@
 <script setup>
 import { ArrowUpBold, ArrowDownBold, Avatar, Close } from '@element-plus/icons-vue'
 import { ref } from 'vue'
+import { RouterView } from 'vue-router'
+
 import treeMenu from '@/components/treeMenu/index.vue'
 let isUp = ref(false)
 
 let upUser = () => {
   isUp.value = !isUp.value
 }
+
+import {
+  Promotion,
+  HomeFilled,
+  Orange,
+  Help,
+  Management,
+  User,
+  Message
+} from '@element-plus/icons-vue'
+
+// menu数据
+let menu = [
+  {
+    title: '系统管理',
+    index: '/system',
+    icon: Promotion,
+    children: [
+      {
+        icon: HomeFilled,
+        title: '系统首页',
+        index: '/home/index',
+      },
+      {
+        icon: Management,
+        title: '系统数据',
+        index: '/home/data',
+      },
+      {
+        icon: Message,
+        title: '就诊档案',
+        index: '/system/files',
+      },
+    ],
+  },
+  {
+    title: '患者管理',
+    index: '/patient',
+    icon: Orange,
+    children:[
+      {
+        title: '患者列表',
+        index: '/patient/patientList',
+        icon: User
+      }
+    ]
+  },
+  {
+    title: '医生管理',
+    index: '/doctor',
+    icon: Help,
+    children:[
+      {
+        title: '医生列表',
+        index: '/doctor/doctorList',
+        icon: User
+      }
+    ]
+  },
+]
 </script>
 <template>
   <div class="common-layout">
@@ -27,8 +89,12 @@ let upUser = () => {
         </div>
       </el-header>
       <el-container>
-        <el-aside width="200px" style="height: 100vh;"><treeMenu /></el-aside>
-        <el-main>Main</el-main>
+        <el-aside width="200px">
+          <treeMenu :menu="menu"/>
+        </el-aside>
+        <el-main>
+          <RouterView></RouterView>
+        </el-main>
       </el-container>
     </el-container>
     <div v-show="isUp" class="positionBox">
