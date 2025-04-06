@@ -29,7 +29,7 @@ let carouselList = [carousel1, carousel2, carousel3]
       <div class="authorTitle">
         关于作者
       </div>
-      <div class="authorBody">作者：游和霖</div>
+      <div class="authorBody">前端作者：游和霖</div>
       <div class="authorBody">
         辽宁石油化工大学软件工程专业应届毕业生（2025届），目前已顺利完成全部课程学习，将于6月返校领取毕业证书。现寻求成都地区的前端开发岗位机会。精通Vue.js框架及Element-UI组件库开发扎实的HTML5/CSS3/JavaScript基础，能熟练使用SCSS预处理语言掌握axios等前后端交互技术，具备完整的项目开发能力持续关注前端技术发展，自学能力强，能快速掌握新技术
         作为应届毕业生，我不仅具备系统的软件工程理论知识，更通过自主学习和项目实践积累了实战经验。
@@ -37,60 +37,67 @@ let carouselList = [carousel1, carousel2, carousel3]
       </div>
     </div>
   </div>
-  <div class="carousel" >
+  <div class="carousel">
     <div style=" width: 1024px;height: 400px; margin: 0 auto;">
       <el-carousel style=" width: 1024px;height: 400px;">
-      <el-carousel-item style=" width: 1024px;height: 400px;"v-for="item in carouselList" :key="item">
-        <img :src="item">
-      </el-carousel-item>
-    </el-carousel>
+        <el-carousel-item style=" width: 1024px;height: 400px;" v-for="item in carouselList" :key="item">
+          <img :src="item">
+        </el-carousel-item>
+      </el-carousel>
     </div>
 
   </div>
 </template>
 <style lang="scss" scoped>
-.introduce{
+.introduce {
   border: 1px solid #ccc;
   height: 300px;
   overflow-y: inherit;
   border-radius: 5px;
   margin-top: 30px;
-  .systemIntroduce{
-    margin:0 10px ;
+
+  .systemIntroduce {
+    margin: 0 10px;
     border-bottom: 1px dashed #ccc;
-    .systemTitle{
+
+    .systemTitle {
       font-size: 18px;
       font-weight: 800;
       padding-left: 2rem;
       margin: 10px 0;
     }
-    .systemBody{
+
+    .systemBody {
       font-size: 16px;
       line-height: 25px;
       text-indent: 2em;
       margin-bottom: 10px;
     }
   }
-  .authorIntroduce{
-    margin:0 10px ;
+
+  .authorIntroduce {
+    margin: 0 10px;
     border-bottom: 1px dashed #ccc;
-      .authorTitle{
-        font-size: 18px;
-        font-weight: 800;
-        padding-left: 2rem;
-        margin: 10px 0;
-      }
-      .authorBody{
+
+    .authorTitle {
+      font-size: 18px;
+      font-weight: 800;
+      padding-left: 2rem;
+      margin: 10px 0;
+    }
+
+    .authorBody {
       font-size: 16px;
       line-height: 25px;
       text-indent: 2em;
       margin-bottom: 10px;
     }
-    }
+  }
 
 }
-.carousel{
-      width: 100%;
-      margin-top: 30px;
-    }
+
+.carousel {
+  width: 100%;
+  margin-top: 30px;
+}
 </style>
