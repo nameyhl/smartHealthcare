@@ -2,6 +2,7 @@
 import { ElMessage } from 'element-plus'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import VerifyCodeImg from '@/components/verification/index.vue'
 
 const router = useRouter()
 
@@ -11,6 +12,20 @@ let formData = ref({
   code:'',
   type: ''// 0:管理员 1:医生 2:患者
 })
+
+let VerifyCode = ref('')
+const getVerifyCodeStr = (code) => {
+  VerifyCode.value = code
+}
+
+const codeIsTrue = (rule, value, callback) => {
+  if(formData.value.code === VerifyCode.value){
+    callback()
+  }else{
+    callback(new Error('验证码错误'))
+  }
+}
+
 let rules = ref({
   userName: [
     { required: true, message: '请输入用户名', trigger: 'blur' },
@@ -22,6 +37,7 @@ let rules = ref({
   ],
   code: [
     { required: true, message: '请输入验证码', trigger: 'blur' },
+    { validator: codeIsTrue, trigger: 'blur'}
   ],
   type: [
     { required: true, message: '请输入验证码', trigger: 'change' },
@@ -40,6 +56,8 @@ const submitForm = async () => {
     }
   })
 }
+
+
 
 // 跳转到注册页面
 const toRegister = () => {
@@ -65,7 +83,8 @@ const toRegister = () => {
             </el-form-item>
             <el-form-item prop="code" label="验证码：">
               <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                <el-input v-model="formData.code"placeholder="请输入验证码" style="width: 150px;"></el-input><img src="@/assets/code.png" alt="">
+                <el-input v-model="formData.code"placeholder="请输入验证码" style="width: 150px;"></el-input>
+                <VerifyCodeImg :refreshTime="60" :canvasHeight="30" ref="verifyCodeImgRef" @getVerifyCodeStr="getVerifyCodeStr" />
               </div>
             </el-form-item>
             <el-form-item prop="type" label="账号类型：">

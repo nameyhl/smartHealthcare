@@ -34,6 +34,11 @@ let routes = [
         name: 'data',
         component: () => import('@/views/data/index.vue'),
       },
+      {
+        path: 'archives',
+        name: 'archives',
+        component: () => import('@/views/archives/index.vue'),
+      },
     ],
   },
   {

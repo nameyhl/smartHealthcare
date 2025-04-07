@@ -40,7 +40,7 @@ let menu = [
       {
         icon: Message,
         title: '就诊档案',
-        index: '/system/files',
+        index: '/home/archives',
       },
     ],
   },

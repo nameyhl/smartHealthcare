@@ -154,6 +154,16 @@ watch(chooseChart, (val) => {
     <Chart :options="option"></Chart>
   </div>
   <div class="title">就诊数据</div>
+  <div class="cardList">
+    <Card v-for="item in cardList" :key="item.title" :card="item"></Card>
+  </div>
+  <div class="chartBox">
+    <el-radio-group v-model="chooseChart" size="large">
+      <el-radio-button label="用户总计柱状图" value="1" />
+      <el-radio-button label="用户增长折线图" value="2" />
+    </el-radio-group>
+    <Chart :options="option"></Chart>
+  </div>
 </template>
 <style lang="scss" scoped>
 .cardList {
